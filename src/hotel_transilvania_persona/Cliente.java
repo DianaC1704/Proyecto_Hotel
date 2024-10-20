@@ -5,13 +5,17 @@ import hotel_transilvania.Reserva;
 public class Cliente extends persona{
 	
 	public String correo;
+<<<<<<< HEAD
 	public int num_cliente; //valores de ci y celular
+=======
+	//public int num_cliente; //valores de ci y celular
+>>>>>>> 18b69412b810b907359bf55b5acadf5ca6fc226a
 	
 	public Cliente(String nombre, String apellido, int ci, int num_celular, String correo, String historial,int num_cliente) {
 		super(nombre, apellido, ci, num_celular);
 		this.correo = correo;
 		
-		this.num_cliente = num_cliente;
+		//this.num_cliente = num_cliente;
 	}
 	
 	public Cliente(String nombre, String apellido, int ci, int num_celular) {
@@ -24,14 +28,14 @@ public class Cliente extends persona{
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
+/*
 	public int getNum_cliente() {
 		return num_cliente;
 	}
 	public void setNum_cliente(int num_cliente) {
 		this.num_cliente = num_cliente;
 	}
-	
+	*/
 	class historial_cli extends Reserva{
 		String apellido;
 		int ci;
