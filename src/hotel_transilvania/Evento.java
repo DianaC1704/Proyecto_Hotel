@@ -1,6 +1,7 @@
 package hotel_transilvania;
 
 public class Evento {
+	
 	private String titulo;
 	private String descripcion;
 	private String nom_organizador;

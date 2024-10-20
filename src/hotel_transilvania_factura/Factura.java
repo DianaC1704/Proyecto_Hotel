@@ -1,6 +1,7 @@
 package hotel_transilvania_factura;
 
 public class Factura extends Pago{
+	
 	public double impuestos;// posible cambio a metodo
 	public int noches;
 	public String info_cliente;// posible cambio a metedo usando obj

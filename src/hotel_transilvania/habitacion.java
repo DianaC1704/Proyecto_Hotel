@@ -1,10 +1,12 @@
 package hotel_transilvania;
 
 public class habitacion {
+	
 	private int num_habitacion;
 	private boolean disponibilidad;
 	private int camas;
 	private int piso;
+	
 	public habitacion(int num_habitacion, boolean disponibilidad, int camas, int piso) {
 		super();
 		this.num_habitacion = num_habitacion;

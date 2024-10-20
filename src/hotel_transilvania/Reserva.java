@@ -1,10 +1,12 @@
 package hotel_transilvania;
 
 public class Reserva extends habitacion{
+	
 	public int numero_reserva;
 	public int noches;
 	private Object fecha_checkin;
 	private Object fecha_chec;
+	
 	public Reserva(int num_habitacion, boolean disponibilidad, int camas, int piso, int numero_reserva, int noches) {
 		super(num_habitacion, disponibilidad, camas, piso);
 		this.numero_reserva = numero_reserva;

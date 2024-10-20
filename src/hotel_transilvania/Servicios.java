@@ -1,9 +1,11 @@
 package hotel_transilvania;
 
 public class Servicios {
+	
 	public String nom_servicio;
 	public double precio;
 	public String descripcion;
+	
 	public Servicios(String nom_servicio, double precio, String descripcion) {
 		super();
 		this.nom_servicio = nom_servicio;

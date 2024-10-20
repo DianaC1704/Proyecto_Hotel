@@ -1,9 +1,11 @@
 package hotel_transilvania_persona;
 
 public class Personal extends persona {
+	
 	public String puesto;
 	public double salario_min;
 	public int num_social;
+	
 	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double salario_min,
 			int num_social) {
 		super(nombre, apellido, ci, num_celular);

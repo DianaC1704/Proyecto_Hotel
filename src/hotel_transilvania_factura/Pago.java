@@ -3,10 +3,12 @@ package hotel_transilvania_factura;
 import hotel_transilvania_persona.persona;
 
 public class Pago extends persona{
+	
 	public double sub_total;
 	public String metodo;
 	public double tarifa_noche;
 	public double tarifa_evento;
+	
 	public Pago(String nombre, String apellido, int ci, int num_celular, double sub_total, String metodo,
 			double tarifa_noche, double tarifa_evento) {
 		super(nombre, apellido, ci, num_celular);

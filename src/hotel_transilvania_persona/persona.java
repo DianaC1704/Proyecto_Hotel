@@ -1,10 +1,12 @@
 package hotel_transilvania_persona;
 
 public class persona {
+	
 	public String nombre;
 	public String apellido;
 	public int ci;
 	public int num_celular;
+	
 	public persona(String nombre, String apellido, int ci, int num_celular) {
 		super();
 		this.nombre = nombre;
