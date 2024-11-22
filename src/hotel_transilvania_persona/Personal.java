@@ -4,10 +4,7 @@ public class Personal extends persona {
 	
 	public String puesto;
 	public double salario_min;
-<<<<<<< HEAD
 	public int num_social;
-=======
->>>>>>> 18b69412b810b907359bf55b5acadf5ca6fc226a
 	
 	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double salario_min,
 			int num_social) {
