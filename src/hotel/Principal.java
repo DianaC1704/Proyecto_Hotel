@@ -13,7 +13,7 @@ public class Principal {
 		conexion con = new conexion();
 		con.conectar();
 		
-		/*
+		/*//esta parte de aqui se completara en el futuro no olvidaar 
 		Cliente cli = new  Cliente("Oscar","ariscain", 8441405, 67318110,"osacjp@gmail.com");
 		Cliente cli2 = new Cliente("Jhon", "Panozo", 123132, 89422205, "Panozo@gmail.com");
 		
