@@ -7,14 +7,14 @@ public class Reserva extends habitacion{
 	private Object fecha_checkin;
 	private Object fecha_chec;
 	
-	public Reserva(int num_habitacion, boolean disponibilidad, int camas, int piso, int numero_reserva, int noches) {
-		super(num_habitacion, disponibilidad, camas, piso);
+	public Reserva(String num_habitacion, boolean disponibilidad, String tipo, int piso, int numero_reserva, int noches) {
+		super(num_habitacion, disponibilidad, tipo, piso);
 		this.numero_reserva = numero_reserva;
 		this.noches = noches;
 	}
 	
-	public Reserva(int num_habitacion, boolean disponibilidad, int camas, int piso) {
-		super(num_habitacion, disponibilidad, camas, piso);
+	public Reserva(String num_habitacion, boolean disponibilidad, String tipo, int piso) {
+		super(num_habitacion, disponibilidad, tipo, piso);
 	}
 	public Reserva() {
 		
