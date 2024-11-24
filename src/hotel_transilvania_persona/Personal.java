@@ -3,33 +3,34 @@ package hotel_transilvania_persona;
 public class Personal extends persona {
 	
 	public String puesto;
-	public double salario_min;
-	public int num_social;
+	public double sueldo_min;
 	
-	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double salario_min,
-			int num_social) {
+	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double sueldo_min) {
 		super(nombre, apellido, ci, num_celular);
 		this.puesto = puesto;
-		this.salario_min = salario_min;
+		this.sueldo_min = sueldo_min;
 		this.ci=ci;
 	}
+	
 	public Personal(String nombre, String apellido, int ci, int num_celular) {
 		super(nombre, apellido, ci, num_celular);
 	}
+
 	public String getPuesto() {
 		return puesto;
 	}
 	public void setPuesto(String puesto) {
 		this.puesto = puesto;
 	}
-	public double getSalario_min() {
-		return salario_min;
-	}
-	public void setSalario_min(double salario_min) {
-		this.salario_min = salario_min;
-	}
 	
-	
+	public double getSueldo_min() {
+		return sueldo_min;
+	}
+
+	public void setSueldo_min(double sueldo_min) {
+		this.sueldo_min = sueldo_min;
+	}
+
 	public String num_soc(int ci, String puesto) {
 		String n;
 		String ci_st = String.valueOf(ci); //se transforma de int a string
@@ -42,8 +43,9 @@ public class Personal extends persona {
 		System.out.println("Nombre: "+getNombre());
 		System.out.println("Apellido: "+getApellido());
 		System.out.println("CI: "+getCi());
-		System.out.println("Numero social: "+num_soc(ci, puesto));
-		System.out.println("Sueldo min: "+getSalario_min());
+		System.out.println("Numero celular: "+getNum_celular());
+		System.out.println("Puesto: "+getPuesto());
+		System.out.println("Sueldo min: "+getSueldo_min());	
 		
 	}
 }

@@ -50,13 +50,13 @@ public class menu_ extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 657, 551);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(243, 52, 24));
+		contentPane.setBackground(new Color(30, 61, 238));
 		contentPane.setForeground(new Color(18, 0, 55));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		lblimagen_1.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/OIP (2).png.jpg")));
+		lblimagen_1.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/menu.jpg")));
 		lblimagen_1.setBounds(10, 10, 324, 498);
 		contentPane.add(lblimagen_1);
 		
@@ -67,7 +67,7 @@ public class menu_ extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		btnEmpresa.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/office-building.png")));
+		btnEmpresa.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/logo_empresario.png")));
 		btnEmpresa.setBounds(545, 150, 64, 64);
 		contentPane.add(btnEmpresa);
 		
@@ -78,15 +78,15 @@ public class menu_ extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		btnUsuario.setIcon(new ImageIcon(menu_.class.getResource("/Imagenes/man (1).png")));
+		btnUsuario.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/logo_usuario.png")));
 		btnUsuario.setBounds(545, 251, 64, 64);
 		contentPane.add(btnUsuario);
 		
 		lblTitulol = new JLabel("BIENVENIDO");
 		lblTitulol.setFont(new Font("Verdana", Font.BOLD, 36));
-		lblTitulol.setBackground(new Color(28, 115, 34));
-		lblTitulol.setForeground(new Color(28, 115, 34));
-		lblTitulol.setBounds(371, 27, 290, 51);
+		lblTitulol.setBackground(new Color(238, 240, 239));
+		lblTitulol.setForeground(new Color(0, 0, 0));
+		lblTitulol.setBounds(344, 35, 290, 51);
 		contentPane.add(lblTitulol);
 		
 		lblempresa = new JLabel("Empresario: ");
@@ -105,6 +105,13 @@ public class menu_ extends JFrame {
 		contentPane.add(lblMensaje);
 		
 		btnAyuda = new JButton("");
+		btnAyuda.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Mostrar_Datos ms_datos = new Mostrar_Datos();
+				
+			}
+		});
 		btnAyuda.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/question.png")));
 		btnAyuda.setBounds(577, 448, 32, 32);
 		contentPane.add(btnAyuda);
