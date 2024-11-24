@@ -35,6 +35,24 @@ public class cliente_db {
         return nombre;
     }
     
+	public boolean agregarCliente(Cliente cliente) {
+		String sql="INSERT INTO cliente(correo,nombre,CI,apellido,num_celular) VALUES(?,?,?,?,?)";
+		try (PreparedStatement parametro=conexion.prepareStatement(sql)){
+			parametro.setString(1, cliente.getCorreo());
+			parametro.setString(2, cliente.getNombre());
+			parametro.setString(3, cliente.getCi()+"");
+			parametro.setString(4, cliente.getApellido());
+			parametro.setString(5, cliente.getNum_celular()+"");
+			
+			int filasInsertadas = parametro.executeUpdate();
+			return filasInsertadas>0;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+    
     public void cerrarConexion() {
         try {
             if (conexion != null && !conexion.isClosed()) {

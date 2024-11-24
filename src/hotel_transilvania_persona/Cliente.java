@@ -6,6 +6,10 @@ public class Cliente extends persona{
 	
 	public String correo;
 	
+	public Cliente() {
+		
+	}
+	
 	
 	public Cliente(String nombre, String apellido, int ci, int num_celular, String correo, String historial,int num_cliente) {
 		super(nombre, apellido, ci, num_celular);
@@ -14,8 +18,9 @@ public class Cliente extends persona{
 		//this.num_cliente = num_cliente;
 	}
 	
-	public Cliente(String nombre, String apellido, int ci, int num_celular) {
+	public Cliente(String nombre, String apellido, int ci, int num_celular, String correo) {
 		super(nombre, apellido, ci, num_celular);
+		this.correo = correo;
 	}
 	
 	public Cliente(String nombre, int ci) {

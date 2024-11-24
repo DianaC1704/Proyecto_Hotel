@@ -91,7 +91,14 @@ public class registrar_reserva extends JFrame {
 		lblNewLabel_1.setBounds(39, 111, 87, 25);
 		contentPane.add(lblNewLabel_1);
 		
-		btnAgregarCliente = new JButton("Agregar Cliente");
+		btnAgregarCliente = new JButton("Registrar Cliente");
+		btnAgregarCliente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				registrar_cliente registrarCliente = new registrar_cliente();
+				registrarCliente.setVisible(true);
+			}
+		});
 		btnAgregarCliente.setEnabled(false);
 		btnAgregarCliente.setBounds(326, 114, 115, 23);
 		contentPane.add(btnAgregarCliente);
