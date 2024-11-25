@@ -2,6 +2,7 @@ package base_de_datos;
 
 import java.sql.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +14,16 @@ import java.sql.SQLException;
 import hotel_transilvania.habitacion;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 import hotel_transilvania.habitacion;
+import base_de_datos.cliente_db;
 
 public class habitacion_db {
 	
 	private Connection conexion;
 	private habitacion Habitacion;
+	
 	
 	public habitacion_db() {
 		try {
@@ -63,6 +68,39 @@ public class habitacion_db {
                }
         return ID;
     }
+    
+    public List<habitacion> obtenerHabitacionesCliente(String ci){
+    	
+		cliente_db cliente_db = new cliente_db();
+		int ID = cliente_db.obtenerID(ci);
+		//System.out.println(ID);
+    	
+    	List<habitacion> habitaciones = new ArrayList<>();
+    	String sql = "SELECT h.tipo_hab, h.num_habitacion, h.tarifa_noche "
+    			+ "FROM cliente c, reserva r, reserva_habitacion rh, habitacion h "
+    			+ "WHERE c.id_cliente = r.id_cliente AND r.id_reserva = rh.id_reserva AND rh.id_habitacion = h.id_habitacion AND c.id_cliente = ?";
+    	
+        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setInt(1, ID); 
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                habitacion hab = new habitacion();
+                hab.settipo(rs.getString("tipo_hab"));
+                hab.setNum_habitacion(rs.getString("num_habitacion"));
+                hab.setTarifa_noche(rs.getDouble("tarifa_noche"));
+                habitaciones.add(hab);
+                System.out.println(hab.getNum_habitacion());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al cargar datos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return habitaciones;
+    }
+    
+    
     
  /*   public double obtenerTarifa(String num_habitacion) {
     	double tarifa = 0;

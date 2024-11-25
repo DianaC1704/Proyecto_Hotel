@@ -78,5 +78,25 @@ public class cliente_db {
             e.printStackTrace();
         }
     }
+    
+    public boolean existeCliente(String ci) {
+        boolean existe = false;
+        String sql = "SELECT COUNT(*) FROM cliente WHERE CI = ?";  
+
+        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setString(1, ci);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                existe = count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return existe;
+    }
+
 
 }

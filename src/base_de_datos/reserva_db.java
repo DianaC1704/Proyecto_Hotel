@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import base_de_datos.cliente_db;
 import base_de_datos.habitacion_db;
@@ -36,7 +38,7 @@ public class reserva_db {
 	
 	public void registrarReserva(String ci, LocalDate fechaInicio, LocalDate fechaFin, int n_noches, List<habitacion> habitaciones) {
 		
-		//1. Obtener CI
+		//1. Obtener ID
 		cliente_db = new cliente_db();
 		int ID = cliente_db.obtenerID(ci);
 		
@@ -72,7 +74,7 @@ public class reserva_db {
 			for(habitacion Habitacion : habitaciones) {
 				
 				int idHabitacion = habitacion_db.obtenerID(Habitacion.getNum_habitacion());
-      	        //System.out.println("Insertando habitación con id_reserva: " + idReserva + " y id_habitacion: " + idHabitacion);
+      	        //System.out.println("id_reserva: " + idReserva + " y id_habitacion: " + idHabitacion);
 				ps2.setInt(1, idReserva);
 				ps2.setInt(2, idHabitacion);
 				ps2.executeUpdate();
@@ -88,6 +90,24 @@ public class reserva_db {
 	}
 	
 	}
+	
+	//metodo en proceso para Factura con EVENTOS y SERVICIOS
+	/*public JTable detalleFactura(String ci) {
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("SERVICIO");
+		modelo.addColumn("ITEM");
+		modelo.addColumn("PRECIO");
+		
+		//1. Obtener cliente ID
+		cliente_db = new cliente_db();
+		int ID = cliente_db.obtenerID(ci);
+		
+		//2. Obtener servicios
+        String sql = "SELECT , ts.nombre AS nombreServicio, ts.tarifa_hora AS precioServicio FROM cliente, reserva, reserva_habitacion, servicio ";
+        try (PreparedStatement parametro = conexion.prepareStatement(sql)){
+        	
+        }
+	}*/
 	
 
 }
