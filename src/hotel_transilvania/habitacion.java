@@ -24,11 +24,12 @@ public class habitacion {
 		this.habitacion_db = new habitacion_db(); 
 	}
 	
-	public habitacion(String num_habitacion, boolean disponibilidad, double tarifa_noche) {
+	public habitacion(String num_habitacion, boolean disponibilidad, double tarifa_noche, String tipo) {
 		super();
 		this.num_habitacion = num_habitacion;
 		this.disponibilidad = disponibilidad;
 		this.tarifa_noche = tarifa_noche;
+		this.tipo = tipo;
 	}
 	
 	public habitacion() {
@@ -70,7 +71,7 @@ public class habitacion {
 
 	public String toString() {
 		
-		return "Habitacion "+ this.getNum_habitacion();
+		return "Habitacion "+ this.getNum_habitacion()+" ("+this.gettipo()+")";
 	}
 	
     public JComboBox<habitacion> desplegarHabitacionesDisp(JComboBox<habitacion> cbxHabitacionesDisp) {
@@ -87,8 +88,17 @@ public class habitacion {
     	
     }
     
-    public double calcularPrecioNoches(double tarifa, int noches) {
-    	double total = noches * tarifa;
+    public double calcularPrecioNoches(List<habitacion> habitaciones, int noches) {
+    	
+    	double sum_tarifas = 0;
+    	
+    	for(habitacion hab : habitaciones) {
+    		double tar = hab.getTarifa_noche();
+    		sum_tarifas += tar;
+    		
+    	}
+    	
+    	double total = sum_tarifas * noches;
     	return total;
     	
     }

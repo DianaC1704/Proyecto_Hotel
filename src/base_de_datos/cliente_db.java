@@ -1,6 +1,7 @@
 package base_de_datos;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,19 +21,34 @@ public class cliente_db {
 		}
 	}
 	
-    public String obtenerNombreConCI(String CI) {
-    	String nombre = "";
-        String sql = "SELECT id_cliente, nombre, CI FROM cliente WHERE CI = ?";
+    public String obtenerApellidoConCI(String CI) {
+    	String apellido = "";
+        String sql = "SELECT id_cliente, apellido, CI FROM cliente WHERE CI = ?";
         try (PreparedStatement parametro = conexion.prepareStatement(sql)) {
             parametro.setString(1, CI);
             ResultSet rs = parametro.executeQuery();
             if (rs.next()) {
-               nombre = rs.getString("nombre");
+               apellido = rs.getString("apellido");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return nombre;
+        return apellido;
+    }
+    
+    public int obtenerID(String CI) {
+    	int id = 0;
+        String sql = "SELECT id_cliente FROM cliente WHERE CI = ?";
+        try (PreparedStatement parametro = conexion.prepareStatement(sql)) {
+            parametro.setString(1, CI);
+            ResultSet rs = parametro.executeQuery();
+            if (rs.next()) {
+               id = rs.getInt("id_cliente");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
     
 	public boolean agregarCliente(Cliente cliente) {

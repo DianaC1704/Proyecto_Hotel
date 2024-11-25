@@ -1,29 +1,43 @@
 package hotel_transilvania;
 
-public class Reserva extends habitacion{
+import java.time.LocalDate;
+
+import hotel_transilvania_persona.Cliente;
+import java.time.DateTimeException;
+
+public class Reserva extends Cliente{
 	
-	public int numero_reserva;
-	public int noches;
-	private Object fecha_checkin;
-	private Object fecha_chec;
+	private LocalDate fecha_inicio;
+	private LocalDate fecha_fin;
+	private int noches;
+	private boolean estado;
+	private Cliente cliente;
 	
-	public Reserva(String num_habitacion, boolean disponibilidad, String tipo, int piso, int numero_reserva, int noches) {
-		super(num_habitacion, disponibilidad, tipo, piso);
-		this.numero_reserva = numero_reserva;
-		this.noches = noches;
-	}
+
 	
-	public Reserva(String num_habitacion, boolean disponibilidad, String tipo, int piso) {
-		super(num_habitacion, disponibilidad, tipo, piso);
-	}
 	public Reserva() {
-		
+		super();
+	
 	}
-	public int getNumero_reserva() {
-		return numero_reserva;
+	public Reserva(String nombre, int ci) {
+		super(nombre, ci);
+	
 	}
-	public void setNumero_reserva(int numero_reserva) {
-		this.numero_reserva = numero_reserva;
+	public Reserva(String nombre, String apellido, int ci, int num_celular, String correo) {
+		super(nombre, apellido, ci, num_celular, correo);
+	
+	}
+	public LocalDate getFecha_inicio() {
+		return fecha_inicio;
+	}
+	public void setFecha_inicio(LocalDate fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+	public LocalDate getFecha_fin() {
+		return fecha_fin;
+	}
+	public void setFecha_fin(LocalDate fecha_fin) {
+		this.fecha_fin = fecha_fin;
 	}
 	public int getNoches() {
 		return noches;
@@ -31,58 +45,25 @@ public class Reserva extends habitacion{
 	public void setNoches(int noches) {
 		this.noches = noches;
 	}
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 	
-	// clase interna, registro entrada
-	 class check_in{
-		public String fecha_checkin; // dd/mm/aa
-		public String hora_checkin; //hh/mm/ss
-		public check_in(String fecha_checkin, String hora_checkin) {
-			super();
-			this.fecha_checkin = fecha_checkin;
-			this.hora_checkin = hora_checkin;
-		}
-		public String getFecha_checkin() {
-			return fecha_checkin;
-		}
-		public void setFecha_checkin(String fecha_checkin) {
-			this.fecha_checkin = fecha_checkin;
-		}
-		public String getHora_checkin() {
-			return hora_checkin;
-		}
-		public void setHora_checkin(String hora_checkin) {
-			this.hora_checkin = hora_checkin;
+	public boolean validarFecha(int dia, int mes, int year) {
+		
+		try {
+			LocalDate fecha = LocalDate.of(year, mes, dia);
+			return true;
+			
+		} catch(DateTimeException ex) {
+			return false;
 		}
 		
 	}
-	// clase interna, registro salida
-	class check_out{
-		public String fecha_checkout;
-		public String hora_checkout;
-		public check_out(String fecha_checkout, String hora_checkout) {
-			super();
-			this.fecha_checkout = fecha_checkout;
-			this.hora_checkout = hora_checkout;
-		}
-		public String getFecha_checkout() {
-			return fecha_checkout;
-		}
-		public void setFecha_checkout(String fecha_checkout) {
-			this.fecha_checkout = fecha_checkout;
-		}
-		public String getHora_checkout() {
-			return hora_checkout;
-		}
-		public void setHora_checkout(String hora_checkout) {
-			this.hora_checkout = hora_checkout;
-		}
-			
-	}
-	public int tiempo_estancia() { //calculo de estancia dentro del hotel
-		int d=0;
-		int inicio = Integer.parseInt(((String) this.fecha_checkin).substring(0,2));
-		int fin =Integer.parseInt(((String) this.fecha_chec).substring(0,2));
-		d = fin -inicio;
-		return d;
-	}
+	
+	
+	
 }

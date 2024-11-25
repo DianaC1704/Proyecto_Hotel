@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
 
 public class Factura extends JFrame {
 
@@ -63,7 +64,7 @@ public class Factura extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		txtbNombreFactura = new JTextField();
-		txtbNombreFactura.setBounds(125, 62, 86, 20);
+		txtbNombreFactura.setBounds(125, 62, 127, 20);
 		contentPane.add(txtbNombreFactura);
 		txtbNombreFactura.setColumns(10);
 		
@@ -74,7 +75,7 @@ public class Factura extends JFrame {
 		
 		txtbNITFactura = new JTextField();
 		txtbNITFactura.setColumns(10);
-		txtbNITFactura.setBounds(125, 90, 86, 20);
+		txtbNITFactura.setBounds(125, 90, 127, 20);
 		contentPane.add(txtbNITFactura);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Fecha");
@@ -84,7 +85,7 @@ public class Factura extends JFrame {
 		
 		txtbFechaFactura = new JTextField();
 		txtbFechaFactura.setColumns(10);
-		txtbFechaFactura.setBounds(125, 115, 86, 20);
+		txtbFechaFactura.setBounds(125, 115, 127, 20);
 		contentPane.add(txtbFechaFactura);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Detalle:");
@@ -105,5 +106,9 @@ public class Factura extends JFrame {
 		table = new JTable();
 		table.setBounds(39, 183, 464, 92);
 		contentPane.add(table);
+		
+		JButton btnGuardarFactura = new JButton("Guardar");
+		btnGuardarFactura.setBounds(223, 349, 89, 23);
+		contentPane.add(btnGuardarFactura);
 	}
 }

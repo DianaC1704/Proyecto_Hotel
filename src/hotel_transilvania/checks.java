@@ -23,7 +23,7 @@ public class checks {
 		return fechaHora;
 	}
 	public void setfechaHora(LocalDateTime hora) {
-		this.fechaHora = fechaHora;
+		this.fechaHora = hora;
 	}
 
 	

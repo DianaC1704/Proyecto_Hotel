@@ -1,6 +1,5 @@
 package hotel_transilvania_persona;
 
-import hotel_transilvania.Reserva;
 
 public class Cliente extends persona{
 	
@@ -35,26 +34,7 @@ public class Cliente extends persona{
 	}
 
 	
-	class historial_cli extends Reserva{
-		String apellido;
-		int ci;
-		int num_hab;
-		
-		public historial_cli(String num_habitacion, boolean disponibilidad, String tipo, int piso, int numero_reserva,
-				int noches, String apellido, int ci, int num_hab) {
-			super(num_habitacion, disponibilidad, tipo, piso, numero_reserva, noches);
-			this.apellido = apellido;
-			this.ci = ci;
-			this.num_hab= num_hab;
-		}
-		public void historial_cliente() {
-			
-			System.out.println("Apellido: "+getApellido());
-			System.out.println("CI: "+getCi());
-			System.out.println("Numero habitacion: "+getNum_habitacion());
-			System.out.println("Dias: "+tiempo_estancia());
-		}
-	}
+
 	
 	
 
