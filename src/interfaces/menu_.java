@@ -7,6 +7,10 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import hotel_transilvania_persona.Personal;
+import hotel_transilvania_persona.gestionar_personal;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -14,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 public class menu_ extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -26,7 +32,7 @@ public class menu_ extends JFrame {
 	private JLabel lblMensaje;
 	private JButton btnAyuda;
 	
-
+	 gestionar_personal mi_gestion_personal;
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +53,8 @@ public class menu_ extends JFrame {
 	 * Create the frame.
 	 */
 	public menu_() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("Menu de opcoiones");
 		setBounds(100, 100, 657, 551);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(30, 61, 238));
@@ -108,13 +115,53 @@ public class menu_ extends JFrame {
 		btnAyuda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//inicializamos mi_gestion_personal
+				/*
+				if(mi_gestion_personal == null) {
+					List<Personal> listaPrefija= new ArrayList<>();
+					
+					mi_gestion_personal = new gestionar_personal();
+					mi_gestion_personal.agregar_personal(new Personal("Oscar", "Robles", 2310, 76446, "Manager", 25005.0));
+					mi_gestion_personal.agregar_personal(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0));
+				*/
+				/*
+					listaPrefija.add(new Personal("Oscar", "Robles", 2310, 76446, "Manager", 25005.0)); 
+					listaPrefija.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
+					listaPrefija.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0));
+				}
+			*/	
 				Mostrar_Datos ms_datos = new Mostrar_Datos();
-				
+				ms_datos.setProcesos(mi_gestion_personal);
+				ms_datos.llenar_tabla();;
+				ms_datos.setVisible(true);
 			}
 		});
 		btnAyuda.setIcon(new ImageIcon(menu_.class.getResource("/imagenes/question.png")));
 		btnAyuda.setBounds(577, 448, 32, 32);
 		contentPane.add(btnAyuda);
+		
+		inicializarDatos();
+     }
+	
+		private void inicializarDatos() {
+			if(mi_gestion_personal == null) {
+				List<Personal> lisPrefi =new ArrayList<>();
+				 lisPrefi.add(new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 ));
+				 lisPrefi.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
+				 lisPrefi.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0)); 
+				 lisPrefi.add(new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0));
+				 lisPrefi.add(new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0));
+				 lisPrefi.add(new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0));
+				 lisPrefi.add(new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0));
+				 lisPrefi.add(new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0));
+				 lisPrefi.add(new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0));
+				 lisPrefi.add(new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0));
+			
+			mi_gestion_personal = new gestionar_personal();
+			for(Personal personal :  lisPrefi ) {
+				mi_gestion_personal.agregar_personal(personal);
+			}
+		}
 		
 	}
 

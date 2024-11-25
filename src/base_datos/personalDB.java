@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hotel_transilvania_persona.Personal;
+import hotel_transilvania_persona.persona;
 
 public class personalDB {
 	private Connection conexion;
@@ -31,34 +32,21 @@ public class personalDB {
 				parametro.setString(5, p.getPuesto());
 				parametro.setDouble(6, p.getSueldo_min());
 				
+				/*
 				System.out.println("Nombre: " + p.getNombre());
 				System.out.println("Apellido: " + p.getApellido()); 
 				System.out.println("CI: " + p.getCi());
 				System.out.println("Num celular: "+p.getNum_celular());
 				System.out.println("Puesto: " + p.getPuesto());
 				System.out.println("Sueldo mínimo: " + p.getSueldo_min()); 
-				
+				*/
 			
 				parametro.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
-	/*
-	 * public boolean verificarCI(int ci) {
-    String sql = "SELECT COUNT(*) FROM cliente WHERE ci = ?";
-    try (PreparedStatement parametro = conexion.prepareStatement(sql)) {
-        parametro.setInt(1, ci);
-        ResultSet rs = parametro.executeQuery();
-        if (rs.next()) {
-            return rs.getInt(1) > 0;
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    return false;
-    }
-*/
+	
 	public Personal obtenerDatosPorCI(int ci) { 
 		String sql = "SELECT * FROM personal WHERE ci = ?"; 
 		try (PreparedStatement parametro = conexion.prepareStatement(sql)){ 
@@ -77,6 +65,8 @@ public class personalDB {
 				}
 		       return null; 
 		       }
+	
+	// buscar a personal usando el ci de este 
 	public void buscarPersonalPorCI(int ci) { 
 		Personal personal = obtenerDatosPorCI(ci); 
 		if (personal != null) { System.out.println("Personal encontrado:");
@@ -123,6 +113,26 @@ public class personalDB {
 	        System.out.println("Eliminado personal con ID: " + ci);
 	    }
 	}
-
+	
+	 //obtener liste de personal
+	public Personal obtener_lista(int ci) {
+		String sql ="SELECT * FROM personal WHERE ci = ?";
+		try(PreparedStatement parametro = conexion.prepareStatement(sql)){
+			parametro.setInt(1,ci);
+			ResultSet rs = parametro.executeQuery();
+			if(rs.next()) {
+				return new Personal(
+						rs.getString("nombre"),
+						rs.getString("apellido"),
+						rs.getInt("ci"), 
+						rs.getInt("celular"),
+						rs.getString("puesto"),
+						rs.getDouble("salario"));
+			}
+		}catch(SQLException e) {
+            e.printStackTrace();
+		}
+		return null;
+	}
 
 }

@@ -4,6 +4,7 @@ import base_datos.ClienteDB;
 import base_datos.personalDB;
 import hotel_transilvania_persona.Cliente;
 import hotel_transilvania_persona.Personal;
+import hotel_transilvania_persona.gestionar_personal;
 import hotel_transilvania_persona.persona;
 
 public class Principal {
@@ -32,11 +33,26 @@ public class Principal {
 		p.llenado_personal();
 		p2.llenado_personal();
 		p3.llenado_personal();
+		
+		
 		personalDB pDB = new personalDB();
 		
 		pDB.agregarPersona(p);
 		pDB.agregarPersona(p2);
 		pDB.agregarPersona(p3);
+	
+		System.out.println("--------------------");
+		
+		gestionar_personal mi_gestion_personal = new gestionar_personal();
+		mi_gestion_personal.agregar_personal(p);
+		mi_gestion_personal.agregar_personal(p2);
+		mi_gestion_personal.agregar_personal(p3);
+		
+		
+		System.out.println("-------------------2-");
+		
+		mi_gestion_personal.mostrar_personal();
+		
 		
 		//pDB.buscarPersonaPorCi(p); ignorar esta parte
 		System.out.println("-------------------------------");
