@@ -13,7 +13,7 @@ public class ClienteDB {
 
 	public ClienteDB() {
 		try {
-			this.conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_transil", "root", ""); 
+			this.conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_hotel", "root", ""); 
 		}catch (Exception e ) {
 			e.printStackTrace();
 		}

@@ -66,7 +66,7 @@ public class Factura extends JFrame {
 		this.habitacion_db = new habitacion_db();
 		cliente_db = new cliente_db();
 				
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 555, 422);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
