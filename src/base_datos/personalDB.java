@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hotel_transilvania_persona.Personal;
+import hotel_transilvania_persona.gestionar_personal;
 import hotel_transilvania_persona.persona;
 
 public class personalDB {
 	private Connection conexion;
+	private gestionar_personal mi_gestion_personal;
 
 	public personalDB() {
 		try {
@@ -22,7 +24,7 @@ public class personalDB {
 		}
 	}
 	//Creación de una nueva propiedad
-		public void agregarPersona(Personal p) {
+		public void agregarPersonal(Personal p) {
 			String sql ="INSERT INTO personal(nombre,apellido,ci,num_celular,puesto,sueldo_min) VALUES(?,?,?,?,?,?)";
 			try(PreparedStatement parametro = conexion.prepareStatement(sql)){
 				parametro.setString(1, p.getNombre());
@@ -114,25 +116,4 @@ public class personalDB {
 	    }
 	}
 	
-	 //obtener liste de personal
-	public Personal obtener_lista(int ci) {
-		String sql ="SELECT * FROM personal WHERE ci = ?";
-		try(PreparedStatement parametro = conexion.prepareStatement(sql)){
-			parametro.setInt(1,ci);
-			ResultSet rs = parametro.executeQuery();
-			if(rs.next()) {
-				return new Personal(
-						rs.getString("nombre"),
-						rs.getString("apellido"),
-						rs.getInt("ci"), 
-						rs.getInt("celular"),
-						rs.getString("puesto"),
-						rs.getDouble("salario"));
-			}
-		}catch(SQLException e) {
-            e.printStackTrace();
-		}
-		return null;
-	}
-
 }

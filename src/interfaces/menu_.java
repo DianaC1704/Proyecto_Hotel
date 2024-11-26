@@ -135,6 +135,7 @@ public class menu_ extends JFrame {
 			*/	
 				Mostrar_Datos ms_datos = new Mostrar_Datos();
 				ms_datos.setProcesos(mi_gestion_personal);
+				ms_datos.setDB(pDB);
 				ms_datos.llenar_tabla();;
 				ms_datos.setVisible(true);
 			}
@@ -170,9 +171,25 @@ public class menu_ extends JFrame {
 		
 		
 		public void agregar_list_basedatos() {
-			pDB = new personalDB();
+			if(pDB ==null) {
+				pDB = new personalDB();
+			}
 			
-			Personal p = new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 );
+			List<Personal> lisPrefi = new ArrayList<>();
+			lisPrefi.add(new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 ));
+			 lisPrefi.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
+			 lisPrefi.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0)); 
+			 lisPrefi.add(new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0));
+			 lisPrefi.add(new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0));
+			 lisPrefi.add(new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0));
+			 lisPrefi.add(new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0));
+			 lisPrefi.add(new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0));
+			 lisPrefi.add(new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0));
+			 lisPrefi.add(new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0));
+	
+			/*
+			 *para agregar personal dentro de la base de datos 
+			 Personal p = new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 );
 			Personal p2 = new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0);
 			Personal p3 = new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0);
 			Personal p4 = new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0);
@@ -193,7 +210,10 @@ public class menu_ extends JFrame {
 			pDB.agregarPersona(p8);
 			pDB.agregarPersona(p9);
 			pDB.agregarPersona(p10);
-			
+			*/
+			 for(Personal p :lisPrefi) {
+				 pDB.agregarPersonal(p);
+			 }
 		}
 
 }
