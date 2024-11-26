@@ -95,7 +95,7 @@ public class registrar_reserva extends JFrame {
 		List<habitacion> seleccionadas = new ArrayList<>();
 		reserva_db = new reserva_db();
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 615, 449);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -19,8 +19,12 @@ public class Cliente extends persona{
 		//this.num_cliente = num_cliente;
 	}
 	
-	public Cliente(String nombre, int ci) {
+	public Cliente(String nombre,int ci) {
 		super(nombre, ci);
+	}
+	
+	public Cliente(String nombre, String apellido, int ci, int num_celular) {
+		super(nombre, apellido, ci, num_celular);
 	}
 	
 
@@ -35,7 +39,6 @@ public class Cliente extends persona{
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-<<<<<<< HEAD
 /*
 	public int getNum_cliente() {
 		return num_cliente;
@@ -54,34 +57,6 @@ public class Cliente extends persona{
 		System.out.println("Nombre "+getCorreo());
 	}
 	
-	class historial_cli extends Reserva{
-		String apellido;
-		int ci;
-		int num_hab;
-		
-		public historial_cli(int num_habitacion, boolean disponibilidad, int camas, int piso, int numero_reserva,
-				int noches, String apellido, int ci, int num_hab) {
-			super(num_habitacion, disponibilidad, camas, piso, numero_reserva, noches);
-			this.apellido = apellido;
-			this.ci = ci;
-			this.num_hab= num_hab;
-		}
-		public void historial_cliente() {
-			
-			System.out.println("Apellido: "+getApellido());
-			System.out.println("CI: "+getCi());
-			System.out.println("Numero habitacion: "+getNum_habitacion());
-			System.out.println("Dias: "+tiempo_estancia());
-		}
-	}
-=======
-
-	
-
-	
-	
->>>>>>> origin/main
-
 }
 
 
