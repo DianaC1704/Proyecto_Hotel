@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import base_datos.personalDB;
 import hotel_transilvania_persona.Personal;
 import hotel_transilvania_persona.gestionar_personal;
 
@@ -21,6 +24,12 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Mostrar_Datos extends JFrame {
 
@@ -33,8 +42,11 @@ public class Mostrar_Datos extends JFrame {
 	private JTable table;
 	
 	 gestionar_personal mi_gestion_personal;
-	 
+	 personalDB pDB;
 	private DefaultTableModel model;
+	private JButton btnBuscar_personal;
+	private JLabel lbltitulo_2;
+	private JTextField txtBuscar;
 	
 	/**
 	 * Launch the application.
@@ -65,7 +77,7 @@ public class Mostrar_Datos extends JFrame {
 	 * Create the frame.
 	 */
 	public Mostrar_Datos() {
-		setBounds(100, 100, 598, 343);
+		setBounds(100, 100, 554, 397);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -78,12 +90,12 @@ public class Mostrar_Datos extends JFrame {
 		lbltitulo.setOpaque(true);
 		lbltitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltitulo.setFont(new Font("Ink Free", Font.PLAIN, 31));
-		lbltitulo.setBounds(21, 0, 541, 45);
+		lbltitulo.setBounds(0, 0, 541, 45);
 		contentPane.add(lbltitulo);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(19, 95, 541, 382);
+		scrollPane.setBounds(0, 110, 541, 382);
 		contentPane.add(scrollPane);
 
 		tabla_personal = new JTable();
@@ -99,6 +111,41 @@ public class Mostrar_Datos extends JFrame {
 		model.addColumn("Salario");
 				
 		scrollPane.setViewportView(tabla_personal);
+		
+		btnBuscar_personal = new JButton("BUSCAR");
+		btnBuscar_personal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//pDB.buscarPersonalPorCI(Integer.parseInt(btnBuscar_personal.getText()));
+				String entrada = txtBuscar.getText();
+				try {
+					int ci =Integer.parseInt(entrada);
+					pDB.buscarPersonalPorCI(ci);
+					
+				}catch (NumberFormatException ex) {
+					// TODO: handle exception
+					System.err.print("La entrada no es un numero valido"+entrada);
+					JOptionPane.showMessageDialog(null, "Porfavor, introduzca un numero valido. ","ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			
+			}
+		});
+		btnBuscar_personal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscar_personal.setBounds(413, 68, 85, 21);
+		contentPane.add(btnBuscar_personal);
+		
+		lbltitulo_2 = new JLabel("Ingrese el ci del personal al que busca:");
+		lbltitulo_2.setBounds(10, 68, 208, 21);
+		contentPane.add(lbltitulo_2);
+		
+		txtBuscar = new JTextField();
+		txtBuscar.setBounds(227, 69, 149, 21);
+		contentPane.add(txtBuscar);
+		txtBuscar.setColumns(10);
 
 	}
 	//llama a la clase gesion de personal, del extrae la lista
@@ -127,6 +174,4 @@ public class Mostrar_Datos extends JFrame {
 			model.addRow(fila);
 		}
 	}
-	
-	
 }

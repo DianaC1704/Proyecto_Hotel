@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import base_datos.personalDB;
 import hotel_transilvania_persona.Personal;
 import hotel_transilvania_persona.gestionar_personal;
 
@@ -31,6 +32,8 @@ public class menu_ extends JFrame {
 	private JLabel lblusuario;
 	private JLabel lblMensaje;
 	private JButton btnAyuda;
+	
+	personalDB pDB;
 	
 	 gestionar_personal mi_gestion_personal;
 	/**
@@ -156,13 +159,41 @@ public class menu_ extends JFrame {
 				 lisPrefi.add(new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0));
 				 lisPrefi.add(new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0));
 				 lisPrefi.add(new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0));
-			
-			mi_gestion_personal = new gestionar_personal();
+		
+				 mi_gestion_personal = new gestionar_personal();
 			for(Personal personal :  lisPrefi ) {
 				mi_gestion_personal.agregar_personal(personal);
 			}
 		}
 		
 	}
+		
+		
+		public void agregar_list_basedatos() {
+			pDB = new personalDB();
+			
+			Personal p = new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 );
+			Personal p2 = new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0);
+			Personal p3 = new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0);
+			Personal p4 = new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0);
+			Personal p5 = new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0);
+			Personal p6 = new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0);
+			Personal p7= new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0);
+			Personal p8 = new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0);
+			Personal p9 = new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0);
+			Personal p10 = new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0);
+			
+			pDB.agregarPersona(p);
+			pDB.agregarPersona(p2);
+			pDB.agregarPersona(p3);
+			pDB.agregarPersona(p4);
+			pDB.agregarPersona(p5);
+			pDB.agregarPersona(p6);
+			pDB.agregarPersona(p7);
+			pDB.agregarPersona(p8);
+			pDB.agregarPersona(p9);
+			pDB.agregarPersona(p10);
+			
+		}
 
 }

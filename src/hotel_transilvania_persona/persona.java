@@ -14,6 +14,14 @@ public class persona {
 		this.ci = ci;
 		this.num_celular = num_celular;
 	}
+	public persona(String nombre, int ci) {
+		super();
+		this.nombre = nombre;
+		this.ci = ci;
+	}
+	public persona() {
+		
+	}
 	public String getNombre() {
 		return nombre;
 	}

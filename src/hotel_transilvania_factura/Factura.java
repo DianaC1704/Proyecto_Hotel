@@ -1,80 +1,43 @@
 package hotel_transilvania_factura;
 
-public class Factura extends Pago{
+import hotel_transilvania.checks;
+
+import java.time.LocalDateTime;
+
+public class Factura {
 	
-	public double impuestos;// posible cambio a metodo
-	public int noches;
-	public String info_cliente;// posible cambio a metedo usando obj
-	public double servicios_subyacentes;
-	public boolean metodo_pago;
+	private String NIT;
+	private double total;
+	private checks checks;
+	private LocalDateTime fecha;
 	
-	public Factura(String nombre, String apellido, int ci, int num_celular, double sub_total, String metodo,
-			double tarifa_noche, double tarifa_evento, double impuestos, int noches, String cliente,
-			double servicios_subyacentes) {
-		super(nombre, apellido, ci, num_celular, sub_total, metodo, tarifa_noche, tarifa_evento);
-		this.impuestos = impuestos;
-		this.noches = noches;
-		this.info_cliente = cliente;
-		this.servicios_subyacentes = servicios_subyacentes;
-	}
 	
-	public Factura(String nombre, String apellido, int ci, int num_celular, double sub_total, String metodo,
-			double tarifa_noche, double tarifa_evento, double impuestos, int noches, String info_cliente,
-			double servicios_subyacentes, boolean metodo_pago) {
-		super(nombre, apellido, ci, num_celular, sub_total, metodo, tarifa_noche, tarifa_evento);
-		this.impuestos = impuestos;
-		this.noches = noches;
-		this.info_cliente = info_cliente;
-		this.servicios_subyacentes = servicios_subyacentes;
-		this.metodo_pago = metodo_pago;
-	}
-
-	public double getImpuestos() {
-		return impuestos;
-	}
-
-	public void setImpuestos(double impuestos) {
-		this.impuestos = impuestos;
-	}
-
-	public int getNoches() {
-		return noches;
-	}
-
-	public void setNoches(int noches) {
-		this.noches = noches;
-	}
-
-	public String getInfo_cliente() {
-		return info_cliente;
-	}
-
-	public void setInfo_cliente(String info_cliente) {
-		this.info_cliente = info_cliente;
-	}
-
-	public double getServicios_subyacentes() {
-		return servicios_subyacentes;
-	}
-
-	public void setServicios_subyacentes(double servicios_subyacentes) {
-		this.servicios_subyacentes = servicios_subyacentes;
+	public Factura() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean getMetodo_pago() {
-		return metodo_pago;
+	public String getNIT() {
+		return NIT;
+	}
+	public void setNIT(String nIT) {
+		this.NIT = nIT;
+	}
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
-	public void setMetodo_pago(boolean metodo_pago) {
-		this.metodo_pago = metodo_pago;
+	public LocalDateTime getFecha() {
+		return fecha;
 	}
 
-	static int metodo_pago() {
-		// tarjeta o efectivo
-		
-		return 0;
-		
+	public void setFecha(LocalDateTime fecha) {
+		this.fecha = fecha;
 	}
+	
 	
 	
 }
