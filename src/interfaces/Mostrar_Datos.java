@@ -1,8 +1,6 @@
 package interfaces;
 
 import java.awt.EventQueue;
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -41,8 +39,8 @@ public class Mostrar_Datos extends JFrame {
 	private DefaultTableModel tableModel;
 	private JTable table;
 	
-	 gestionar_personal mi_gestion_personal;
-	 personalDB pDB;
+	private gestionar_personal mi_gestion_personal;
+	private personalDB pDB;
 	private DefaultTableModel model;
 	private JButton btnBuscar_personal;
 	private JLabel lbltitulo_2;
@@ -119,20 +117,28 @@ public class Mostrar_Datos extends JFrame {
 				
 				//pDB.buscarPersonalPorCI(Integer.parseInt(btnBuscar_personal.getText()));
 				String entrada = txtBuscar.getText();
+			
 				try {
-					int ci =Integer.parseInt(entrada);
-					pDB.buscarPersonalPorCI(ci);
+					int ci =Integer.parseInt(entrada);   //se transforma el  texto a int para verificar el ci dentro de la base
+					Personal personal = pDB.obtenerDatosPorCI(ci);
 					
+	
+						if(personal != null) {
+							JOptionPane.showMessageDialog(null, "Personal encontrado:\n"
+						          + "Nombre: "+ personal.getNombre()+"\n"
+						          + "Apellido: "+ personal.getApellido()+"\n"
+						          + "Num celular: "+ personal.getNum_celular()+"\n"
+						          + "Puesto: "+personal.getPuesto()+"\n"
+						          + "Sueldo minimo: "+personal.getSueldo_min()+"Resultado",JOptionPane.INFORMATION_MESSAGE);
+						}else {
+							JOptionPane.showMessageDialog(null, "No se encontro al personal con el CI: "+ci+" Resultado", entrada, JOptionPane.INFORMATION_MESSAGE);
+						}				
 				}catch (NumberFormatException ex) {
 					// TODO: handle exception
 					System.err.print("La entrada no es un numero valido"+entrada);
 					JOptionPane.showMessageDialog(null, "Porfavor, introduzca un numero valido. ","ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			
-			}
-		});
-		btnBuscar_personal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnBuscar_personal.setBounds(413, 68, 85, 21);
@@ -146,6 +152,9 @@ public class Mostrar_Datos extends JFrame {
 		txtBuscar.setBounds(227, 69, 149, 21);
 		contentPane.add(txtBuscar);
 		txtBuscar.setColumns(10);
+		
+		//inicializar el personalDB
+		pDB = new personalDB();
 
 	}
 	//llama a la clase gesion de personal, del extrae la lista
@@ -159,7 +168,6 @@ public class Mostrar_Datos extends JFrame {
 			System.err.println("Error: mi_gestion_personal no ha sido inicializado.");
 			return;
 		}
-		
 		List<Personal> lista_personal = mi_gestion_personal.getlisList();
 		
 		for(Personal personal: lista_personal) {
@@ -174,4 +182,6 @@ public class Mostrar_Datos extends JFrame {
 			model.addRow(fila);
 		}
 	}
+
+	
 }
