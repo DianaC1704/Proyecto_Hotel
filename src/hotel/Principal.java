@@ -36,11 +36,11 @@ public class Principal {
 		
 		
 		personalDB pDB = new personalDB();
-		
+		/*
 		pDB.agregarPersona(p);
 		pDB.agregarPersona(p2);
 		pDB.agregarPersona(p3);
-	
+	*/
 		System.out.println("--------------------");
 		
 		gestionar_personal mi_gestion_personal = new gestionar_personal();

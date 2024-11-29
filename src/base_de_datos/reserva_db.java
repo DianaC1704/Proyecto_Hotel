@@ -30,7 +30,7 @@ public class reserva_db {
 		
 		habitacion_db = new habitacion_db();
 		try {
-			conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_hotel", "root", "");
+			conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_transil", "root", "");
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		}

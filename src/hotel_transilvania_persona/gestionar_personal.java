@@ -33,7 +33,7 @@ public class gestionar_personal{
 			System.out.println("ci: "+personal.getCi());
 			System.out.println("Celular: "+personal.getCi());
 			System.out.println("Puesto: "+personal.getPuesto());
-			System.out.println("Salario: "+personal.getSueldo_min());
+			System.out.println("Salario: "+personal.getsalario());
 		}
 	}
 }

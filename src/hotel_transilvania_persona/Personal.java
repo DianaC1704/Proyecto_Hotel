@@ -3,12 +3,12 @@ package hotel_transilvania_persona;
 public class Personal extends persona {
 	
 	public String puesto;
-	public double sueldo_min;
+	public double salario;
 	
-	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double sueldo_min) {
+	public Personal(String nombre, String apellido, int ci, int num_celular, String puesto, double salario) {
 		super(nombre, apellido, ci, num_celular);
 		this.puesto = puesto;
-		this.sueldo_min = sueldo_min;
+		this.salario = salario;
 		this.ci=ci;
 	}
 	
@@ -23,12 +23,12 @@ public class Personal extends persona {
 		this.puesto = puesto;
 	}
 	
-	public double getSueldo_min() {
-		return sueldo_min;
+	public double getsalario() {
+		return salario;
 	}
 
-	public void setSueldo_min(double sueldo_min) {
-		this.sueldo_min = sueldo_min;
+	public void setsalario(double salario) {
+		this.salario = salario;
 	}
 
 	public String num_soc(int ci, String puesto) {
@@ -45,7 +45,7 @@ public class Personal extends persona {
 		System.out.println("CI: "+getCi());
 		System.out.println("Numero celular: "+getNum_celular());
 		System.out.println("Puesto: "+getPuesto());
-		System.out.println("Sueldo min: "+getSueldo_min());	
+		System.out.println("Sueldo min: "+getsalario());	
 		
 	}
 }

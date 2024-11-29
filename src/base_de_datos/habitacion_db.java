@@ -27,7 +27,7 @@ public class habitacion_db {
 	
 	public habitacion_db() {
 		try {
-			conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_hotel", "root", "");
+			conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_transil", "root", "");
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		}

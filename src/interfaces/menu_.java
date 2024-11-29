@@ -3,7 +3,7 @@ package interfaces;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
-
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -21,6 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
 public class menu_ extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -117,26 +118,10 @@ public class menu_ extends JFrame {
 		btnAyuda = new JButton("");
 		btnAyuda.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				//inicializamos mi_gestion_personal
-				/*
-				if(mi_gestion_personal == null) {
-					List<Personal> listaPrefija= new ArrayList<>();
-					
-					mi_gestion_personal = new gestionar_personal();
-					mi_gestion_personal.agregar_personal(new Personal("Oscar", "Robles", 2310, 76446, "Manager", 25005.0));
-					mi_gestion_personal.agregar_personal(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0));
-				*/
-				/*
-					listaPrefija.add(new Personal("Oscar", "Robles", 2310, 76446, "Manager", 25005.0)); 
-					listaPrefija.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
-					listaPrefija.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0));
-				}
-			*/	
+			public void mouseClicked(MouseEvent e) {		
 				Mostrar_Datos ms_datos = new Mostrar_Datos();
-				ms_datos.setProcesos(mi_gestion_personal);
 				ms_datos.setDB(pDB);
-				ms_datos.llenar_tabla();;
+				ms_datos.llenan_tabla();
 				ms_datos.setVisible(true);
 			}
 		});
@@ -144,76 +129,21 @@ public class menu_ extends JFrame {
 		btnAyuda.setBounds(577, 448, 32, 32);
 		contentPane.add(btnAyuda);
 		
+		//boton que se va eliminar duplicados
+		JButton btnEliminarDuplicados = new JButton("Eliminar Duplicados");
+		btnEliminarDuplicados.addMouseListener(new MouseAdapter() {
+			@Override public void mouseClicked(MouseEvent e) {
+				pDB.eliminarPersonalDuplicados(); 
+				JOptionPane.showMessageDialog(null, "Los registros duplicados han sido eliminados.");
+				} 
+			}); 
+		btnEliminarDuplicados.setBounds(200, 500, 200, 30);
+		contentPane.add(btnEliminarDuplicados);
+		
+		
 		inicializarDatos();
      }
-	
-		private void inicializarDatos() {
-			if(mi_gestion_personal == null) {
-				List<Personal> lisPrefi =new ArrayList<>();
-				 lisPrefi.add(new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 ));
-				 lisPrefi.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
-				 lisPrefi.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0)); 
-				 lisPrefi.add(new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0));
-				 lisPrefi.add(new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0));
-				 lisPrefi.add(new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0));
-				 lisPrefi.add(new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0));
-				 lisPrefi.add(new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0));
-				 lisPrefi.add(new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0));
-				 lisPrefi.add(new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0));
-		
-				 mi_gestion_personal = new gestionar_personal();
-			for(Personal personal :  lisPrefi ) {
-				mi_gestion_personal.agregar_personal(personal);
-			}
-		}
-		
+	private void inicializarDatos() {
+		pDB  = new personalDB();
 	}
-		
-		
-		public void agregar_list_basedatos() {
-			if(pDB ==null) {
-				pDB = new personalDB();
-			}
-			
-			List<Personal> lisPrefi = new ArrayList<>();
-			lisPrefi.add(new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 ));
-			 lisPrefi.add(new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0)); 
-			 lisPrefi.add(new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0)); 
-			 lisPrefi.add(new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0));
-			 lisPrefi.add(new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0));
-			 lisPrefi.add(new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0));
-			 lisPrefi.add(new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0));
-			 lisPrefi.add(new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0));
-			 lisPrefi.add(new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0));
-			 lisPrefi.add(new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0));
-	
-			/*
-			 *para agregar personal dentro de la base de datos 
-			 Personal p = new Personal("oscar","ariscain",2310 ,76446, "Manager", 25005.0 );
-			Personal p2 = new Personal("Belinda", "Mena", 312313, 25350, "Cajera 1", 2500.0);
-			Personal p3 = new Personal("Juan", "Perez", 456789, 12345, "Recepcionista", 1800.0);
-			Personal p4 = new Personal("Ana", "Gomez", 789123, 98765, "Limpieza", 1500.0);
-			Personal p5 = new Personal("Carlos", "Lopez", 325775, 65463, "Cajera 2", 2800.0);
-			Personal p6 = new Personal("Marco", "Oropesa", 343254, 31231, "Cajera 3", 2710.0);
-			Personal p7= new Personal("Julia", "Lopez", 398954, 54321, "Seguridad", 1500.0);
-			Personal p8 = new Personal("Canela", "Quispe", 778454, 54321, "Seguridad", 3000.0);
-			Personal p9 = new Personal("Caroline", "Rodrigos", 326544, 54321, "Seguridad", 2650.0);
-			Personal p10 = new Personal("Amir", "Mamani", 378944, 54321, "Seguridad", 2545.0);
-			
-			pDB.agregarPersona(p);
-			pDB.agregarPersona(p2);
-			pDB.agregarPersona(p3);
-			pDB.agregarPersona(p4);
-			pDB.agregarPersona(p5);
-			pDB.agregarPersona(p6);
-			pDB.agregarPersona(p7);
-			pDB.agregarPersona(p8);
-			pDB.agregarPersona(p9);
-			pDB.agregarPersona(p10);
-			*/
-			 for(Personal p :lisPrefi) {
-				 pDB.agregarPersonal(p);
-			 }
-		}
-
 }
