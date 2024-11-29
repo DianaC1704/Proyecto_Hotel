@@ -2,9 +2,13 @@ package interfaces;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import base_datos.personalDB;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -17,6 +21,8 @@ public class menu_principal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private personalDB pDB;
+
 
 	/**
 	 * Launch the application.
@@ -51,6 +57,9 @@ public class menu_principal extends JFrame {
 		lblNewLabel.setFont(new Font("KG Sorry Not Sorry Chub", Font.PLAIN, 23));
 		lblNewLabel.setBounds(116, 23, 183, 28);
 		contentPane.add(lblNewLabel);
+		//inicializar personalDB
+		pDB = new personalDB();
+		
 		
 		JButton btnRegistrarCliente = new JButton("");
 		btnRegistrarCliente.addMouseListener(new MouseAdapter() {
@@ -74,6 +83,9 @@ public class menu_principal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Mostrar_Datos mostrar_datos = new Mostrar_Datos();
+				//estos dos para crear la base de datos y agregar persoanl
+				mostrar_datos.setDB(pDB);
+				mostrar_datos.llenan_tabla();
 				mostrar_datos.setVisible(true);
 			}
 		});

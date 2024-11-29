@@ -143,6 +143,7 @@ public class personalDB {
 			parametro.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace(); 
+				
 				} 
 		}
 	//eliminar a personal duplicado usando list con el eliminarPersonal--- posible no cambio

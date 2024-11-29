@@ -141,6 +141,7 @@ public class menu_ extends JFrame {
 		contentPane.add(btnEliminarDuplicados);
 		
 		
+		
 		inicializarDatos();
      }
 	private void inicializarDatos() {

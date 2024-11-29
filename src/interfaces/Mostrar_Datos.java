@@ -36,8 +36,6 @@ public class Mostrar_Datos extends JFrame {
 	private JLabel lbltitulo;
 	private JScrollPane scrollPane;
 	private JTable tabla_personal;
-	private DefaultTableModel tableModel;
-	private JTable table;
 	
 	private personalDB pDB;
 	private DefaultTableModel model;
@@ -76,12 +74,10 @@ public class Mostrar_Datos extends JFrame {
 		contentPane.setLayout(null);
 		
 		lbltitulo = new JLabel("LISTA DEL PERSONAL");
-		lbltitulo.setBackground(new Color(255, 255, 255));
-		lbltitulo.setForeground(new Color(0, 0, 0));
 		lbltitulo.setOpaque(true);
 		lbltitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltitulo.setFont(new Font("KG Sorry Not Sorry Chub", Font.PLAIN, 31));
-		lbltitulo.setBounds(0, 0, 541, 45);
+		lbltitulo.setBounds(37, 0, 541, 45);
 		contentPane.add(lbltitulo);
 		
 		scrollPane = new JScrollPane();
@@ -114,10 +110,8 @@ public class Mostrar_Datos extends JFrame {
 			
 				try {
 					int ci =Integer.parseInt(entrada);
-					//se transforma el  texto a int para verificar el ci dentro de la base
 					Personal personal = pDB.obtenerDatosPorCI(ci);
 					
-	
 						if(personal != null) {
 							pDB.buscarPersonalPorCI(ci);
 							
@@ -153,10 +147,19 @@ public class Mostrar_Datos extends JFrame {
 		txtBuscar.setColumns(10);
 		
 		btnAgregar_personal = new JButton("AGREGAR");
+		btnAgregar_personal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				registrar_personal registrar_personal = new registrar_personal();
+				registrar_personal.setDB(pDB);
+				registrar_personal.setVisible(true);
+			}
+		});
 		btnAgregar_personal.setBounds(402, 55, 102, 21);
 		contentPane.add(btnAgregar_personal);
 
 	}
+	
 	//metodo para establecer la instancia de personalDB
 	public void setDB(personalDB pDB){
 		this.pDB = pDB;
